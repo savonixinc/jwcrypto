@@ -152,6 +152,7 @@ JWKParamsRegistry = {
 
 # RFC 7518 - 7.6 , RFC 8037 - 5
 JWKEllipticCurveRegistry = {'P-256': 'P-256 curve',
+                            'P-256K': 'P-256K curve',
                             'P-384': 'P-384 curve',
                             'P-521': 'P-521 curve',
                             'Ed25519': 'Ed25519 signature algorithm key pairs',
@@ -179,6 +180,7 @@ JWKOperationsRegistry = {'sign': 'Compute digital Signature or MAC',
 """Registry of allowed operations"""
 
 JWKpycaCurveMap = {'secp256r1': 'P-256',
+                   'secp256k1': 'P-256K',
                    'secp384r1': 'P-384',
                    'secp521r1': 'P-521'}
 
@@ -397,6 +399,8 @@ class JWK(object):
     def _get_curve_by_name(self, name):
         if name == 'P-256':
             return ec.SECP256R1()
+        elif name == 'P-256K':
+            return ec.SECP256K1()
         elif name == 'P-384':
             return ec.SECP384R1()
         elif name == 'P-521':
