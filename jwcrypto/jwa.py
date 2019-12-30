@@ -246,7 +246,7 @@ class _ES256(_RawEC, JWAAlgorithm):
     algorithm_use = 'sig'
 
     def __init__(self):
-        super(_ES256, self).__init__('P-256', hashes.SHA256())
+        super(_ES256, self).__init__('P-256K', hashes.SHA256())
 
 
 class _ES384(_RawEC, JWAAlgorithm):
