@@ -184,6 +184,12 @@ JWKpycaCurveMap = {'secp256r1': 'P-256',
                    'secp384r1': 'P-384',
                    'secp521r1': 'P-521'}
 
+JWKCurveMap = {'P-256': ec.SECP256R1(),
+               'P-256K': ec.SECP256K1(),
+               'P-384': ec.SECP384R1(),
+               'P-521': ec.SECP521R1()}
+
+
 
 class InvalidJWKType(JWException):
     """Invalid JWK Type Exception.
@@ -397,15 +403,9 @@ class JWK(object):
         self.import_key(**params)
 
     def _get_curve_by_name(self, name):
-        if name == 'P-256':
-            return ec.SECP256R1()
-        elif name == 'P-256K':
-            return ec.SECP256K1()
-        elif name == 'P-384':
-            return ec.SECP384R1()
-        elif name == 'P-521':
-            return ec.SECP521R1()
-        elif name in _OKP_CURVES_TABLE:
+        if name in JWKCurveMap:
+            return JWKCurveMap[name]
+        if name in _OKP_CURVES_TABLE:
             return name
         else:
             raise InvalidJWKValue('Unknown Elliptic Curve Type')
