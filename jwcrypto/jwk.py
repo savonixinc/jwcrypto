@@ -190,7 +190,6 @@ JWKCurveMap = {'P-256': ec.SECP256R1(),
                'P-521': ec.SECP521R1()}
 
 
-
 class InvalidJWKType(JWException):
     """Invalid JWK Type Exception.
 

@@ -248,6 +248,7 @@ class _ES256(_RawEC, JWAAlgorithm):
     def __init__(self):
         super(_ES256, self).__init__('P-256', hashes.SHA256())
 
+
 class _ES256K(_RawEC, JWAAlgorithm):
 
     name = "ES256K"
@@ -258,6 +259,7 @@ class _ES256K(_RawEC, JWAAlgorithm):
 
     def __init__(self):
         super(_ES256K, self).__init__('P-256K', hashes.SHA256())
+
 
 class _ES384(_RawEC, JWAAlgorithm):
 
