@@ -261,6 +261,10 @@ PrivateKeys_EdDsa = {
 
 
 class TestJWK(unittest.TestCase):
+    def test_invalid_generate(self):
+        with self.assertRaises(jwk.InvalidJWKType):
+            jwk.JWK(generate='RSA')
+
     def test_create_pubKeys(self):
         keylist = PublicKeys['keys']
         for key in keylist:
